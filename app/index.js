@@ -1,11 +1,11 @@
 
 //MODELO
-const ANIVERSARY = new Date(2022, 07, 04, 00, 00, 00, 0);
+const ANIVERSARY = new Date(2022, 07, 04, 10, 00, 00, 0);
 let timeLeft = {};
 
 //VISTA
 const showUnits = (day, hour, minute, second) => {
-    
+
     let daysLeftElement = document.getElementById('daysLeft'),
         hoursLeftElement = document.getElementById('hoursLeft'),
         minutesLeftElement = document.getElementById('minutesLeft'),
@@ -13,7 +13,7 @@ const showUnits = (day, hour, minute, second) => {
 
     daysLeftElement.innerHTML = day;
 
-    if (second < 10 && minute < 10 && hour < 10) {    
+    if (second < 10 && minute < 10 && hour < 10) {
         hoursLeftElement.innerHTML = '0' + hour;
         minutesLeftElement.innerHTML = '0' + minute;
         secondsLeftElement.innerHTML = '0' + second;
@@ -53,26 +53,24 @@ const surprise = () => {
 }
 
 //Controlador
-const getRemainTime = () =>{
+const getRemainTime = () => {
     let now = new Date();
     let remainTime = (ANIVERSARY - now) / 1000;
 
-    timeLeft = 
-        {
-            s: Math.floor(remainTime % 60),
-            m: Math.floor(remainTime / 60 % 60),
-            h: Math.floor(remainTime / 3600 % 24),
-            d: Math.floor(remainTime / (3600*24))
-        };
+    timeLeft =
+    {
+        s: Math.floor(remainTime % 60),
+        m: Math.floor(remainTime / 60 % 60),
+        h: Math.floor(remainTime / 3600 % 24),
+        d: Math.floor(remainTime / (3600 * 24))
+    };
 }
 
 const countDown = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(resolve, 1000);
-    });
+    return new Promise(resolve => { setTimeout(resolve, 1000); });
 }
 
-const start = async() => {
+const start = async () => {
     let on = true;
     while (on) {
         await countDown(getRemainTime());
