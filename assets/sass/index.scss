@@ -8,10 +8,26 @@
         url(../fonts/DancingScript/DancingScript-Regular.ttf) format('truetype'); 
 }
 
+//Colors
 $mainColor: #DD969C;
 $borderColor: rgb(199, 157, 209);
 $textColor: antiquewhite;
+
+//Fonts and base line
 $bodyFontRegular: 'Dancing Script Regular';
+$module: 0.5rem;
+
+//Breakpoints
+$bp01: 1100px;
+$bp02: 670px;
+$bp03: 572px;
+
+//Mixin for breakpoints
+@mixin media($bp) {
+    @media screen and (max-width: $bp) {
+        @content;
+    }
+}
 
 * {
     font-family: $bodyFontRegular, sans-serif;
@@ -29,37 +45,80 @@ body {
     width: 90%;
     display: flex;
     flex-direction: column;
+
+    @include media($bp01) {
+        width: 100%;
+    }
 }
 
 #title {
-    font-size: 4rem;
+    font-size: $module * 8;
     text-align: center;
     color: $textColor;
-    margin: 0 auto 2rem auto;
+    margin: $module*2 auto;
+
+    @include media($bp02) {
+        font-size: $module * 7;
+        margin-top: $module * 12;
+    }
+
+    @include media($bp03) {
+        margin-top: $module * 56;
+    }
 }
 
 #dateRemainBox {
-    display: flex;
-    margin: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: $module $module * 4;
+    column-gap: $module * 2;
+
+    @include media($bp02) {
+        grid-template-columns: repeat(2, 250px);
+        grid-template-rows: repeat(2, 1fr);
+        gap: $module;
+        place-content: center;
+    }
+
+    @include media($bp03) {
+        grid-template-columns: 300px;
+        grid-template-rows: repeat(4, 1fr);
+    }
 
     > div {
-        flex-grow: 1;
-        margin: 0 0.5rem;
         text-align: center;
-        border-radius: 0.5rem;
+        border-radius: $module;
     }
 }
 
 .title-units {
+    font-size: $module * 8;
     color: $textColor;
-    margin: 0.5rem 0;
-    font-size: 4rem;
+    margin: $module 0;
+
+    @include media($bp02) {
+        font-size: $module * 6;
+    }
+
+    @include media($bp03) {
+        font-size: $module * 8;
+    }
 }
 
 .units {
-    font-size: 4rem;
+    width: 80%;
+    font-size: $module * 8;
     background-color: $textColor;
     color: $mainColor;
     margin: 0 auto;
-    border-radius: 2rem;
+    border-radius: $module * 4;
+
+    @include media($bp02) {
+        font-size: $module*6;
+        width: 60%;
+    }
+
+    @include media($bp03) {
+        font-size: $module * 10;
+    }
 }
