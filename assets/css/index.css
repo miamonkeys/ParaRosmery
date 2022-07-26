@@ -23,37 +23,99 @@ body {
     flex-direction: column
 }
 
+@media screen and (max-width: 1100px) {
+    #container {
+        width: 100%
+    }
+}
+
 #title {
     font-size: 4rem;
     text-align: center;
     color: #faebd7;
-    margin: 0 auto 2rem auto
+    margin: 1rem auto
+}
+
+@media screen and (max-width: 670px) {
+    #title {
+        font-size: 3.5rem;
+        margin-top: 6rem
+    }
+}
+
+@media screen and (max-width: 572px) {
+    #title {
+        margin-top: 28rem
+    }
 }
 
 #dateRemainBox {
-    display: flex;
-    margin: 0 2rem
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: .5rem 2rem;
+    -moz-column-gap: 1rem;
+    column-gap: 1rem
+}
+
+@media screen and (max-width: 670px) {
+    #dateRemainBox {
+        grid-template-columns: repeat(2, 250px);
+        grid-template-rows: repeat(2, 1fr);
+        gap: .5rem;
+        place-content: center
+    }
+}
+
+@media screen and (max-width: 572px) {
+    #dateRemainBox {
+        grid-template-columns: 300px;
+        grid-template-rows: repeat(4, 1fr)
+    }
 }
 
 #dateRemainBox>div {
-    flex-grow: 1;
-    margin: 0 .5rem;
     text-align: center;
     border-radius: .5rem
 }
 
 .title-units {
+    font-size: 4rem;
     color: #faebd7;
-    margin: .5rem 0;
-    font-size: 4rem
+    margin: .5rem 0
+}
+
+@media screen and (max-width: 670px) {
+    .title-units {
+        font-size: 3rem
+    }
+}
+
+@media screen and (max-width: 572px) {
+    .title-units {
+        font-size: 4rem
+    }
 }
 
 .units {
+    width: 80%;
     font-size: 4rem;
     background-color: #faebd7;
     color: #dd969c;
     margin: 0 auto;
     border-radius: 2rem
+}
+
+@media screen and (max-width: 670px) {
+    .units {
+        font-size: 3rem;
+        width: 60%
+    }
+}
+
+@media screen and (max-width: 572px) {
+    .units {
+        font-size: 5rem
+    }
 }
 
 /*# sourceMappingURL=index.css.map */
